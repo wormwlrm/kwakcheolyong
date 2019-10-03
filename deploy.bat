@@ -1,5 +1,5 @@
 REM build
-npm run build
+call npm run build
 
 REM navigate into the build output directory
 cd dist

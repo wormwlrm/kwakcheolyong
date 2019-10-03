@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-import '@/style/element-ui.scss';
-import 'element-theme-dark';
 import locale from 'element-ui/lib/locale/lang/ko';
+import 'element-ui/lib/theme-chalk/index.css';
+// eslint-disable-next-line
+import 'element-theme-dark';
+
 import App from './App.vue';
+
 
 Vue.use(ElementUI, {
   locale,
