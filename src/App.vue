@@ -14,12 +14,9 @@
             <el-option v-for="img in getImages" :value="img.id" :key="img.id" :label="img.name" />
           </el-select>
           <el-card shadow="none" class="kwakchelyong__canvas-wrapper">
-            <canvas
-              id="canvas"
-              ref="canvas"
-              :width="1000"
-              :height="427"
-            >이 브라우저는 HTML5의 canvas 요소를 지원하지 않습니다</canvas>
+            <canvas id="canvas" ref="canvas" :width="1000" :height="427">
+              이 브라우저는 HTML5의 canvas 요소를 지원하지 않습니다
+            </canvas>
           </el-card>
           <el-form-item label="원본 대사">
             <blockquote v-html="getImages[imageIndex].original"></blockquote>
@@ -62,7 +59,7 @@
                 <el-color-picker
                   :value="option.fontColor"
                   @input="onValueChanged('fontColor', $event)"
-                ></el-color-picker>
+                />
               </el-form-item>
             </el-col>
 
@@ -91,7 +88,16 @@
           </el-form-item>
         </el-form>
       </el-main>
-      <el-alert title="현재 테스트 중입니다" type="info" effect="dark"></el-alert>
+      <el-alert
+        :title="
+          `
+          웹뷰(페이스북 앱 등)에서는 다운로드 버튼이 작동하지 않습니다.
+          다른 브라우저를 이용하면 정상적으로 이용하실 수 있습니다.
+          `
+        "
+        type="info"
+        effect="dark"
+      ></el-alert>
 
       <el-footer>
         <p>
@@ -101,13 +107,17 @@
             :underline="false"
             target="_blank"
             href="https://wormwlrm.github.io"
-          >재그지그</el-link>,
+          >
+            재그지그 </el-link
+          >,
           <el-link
             type="primary"
             :underline="false"
             target="_blank"
             href="mailto:wormwlrm@naver.com"
-          >이슈 / 버그 제보</el-link>
+          >
+            이슈 / 버그 제보
+          </el-link>
         </p>
       </el-footer>
     </el-container>
@@ -161,10 +171,7 @@ export default {
       const url = this.$refs.canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute(
-        'download',
-        `${this.getImages[this.imageIndex].name}.png`,
-      ); // or any other extension
+      link.setAttribute('download', `${this.getImages[this.imageIndex].name}.png`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -184,14 +191,7 @@ export default {
     updateCanvasText() {
       const { canvas } = this.$refs;
 
-      const {
-        text,
-        fontFamily,
-        fontSize,
-        fontColor,
-        fontWeight,
-        textBorder,
-      } = this.option;
+      const { text, fontFamily, fontSize, fontColor, fontWeight, textBorder } = this.option;
 
       const ctx = canvas.getContext('2d');
 
@@ -231,8 +231,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/style/variable.scss";
-@import url("https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap");
+@import '@/style/variable.scss';
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
 
 html,
 body {

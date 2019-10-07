@@ -7,7 +7,6 @@ import 'element-theme-dark';
 
 import App from './App.vue';
 
-
 Vue.use(ElementUI, {
   locale,
 });
