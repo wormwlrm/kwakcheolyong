@@ -98,8 +98,8 @@
         type="info"
         effect="dark"
       ></el-alert>
+      <br />
       <Adsense data-ad-client="ca-pub-8996192158520412" data-ad-slot="5328204023"></Adsense>
-
       <el-footer>
         <p>
           Created by
