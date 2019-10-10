@@ -2,37 +2,41 @@
   <div id="app">
     <el-container>
       <el-header>
-        <h2 class="kwakchelyong__title">곽철용 짤 생성기</h2>
+        <h2 class="kwakcheolyong__title">곽철용 짤 생성기</h2>
       </el-header>
       <el-main>
-        <el-form label-width="120px">
+        <el-form :label-position="labelPosition" label-width="120px">
           <el-select
+            class="kwakcheolyong__image-selector"
             :value="imageIndex"
             @input="onImageChanged($event)"
-            class="kwakchelyong__image-selector"
           >
-            <el-option v-for="img in getImages" :value="img.id" :key="img.id" :label="img.name" />
+            <el-option v-for="img in images" :value="img.id" :key="img.id" :label="img.name" />
           </el-select>
-          <el-card shadow="none" class="kwakchelyong__canvas-wrapper">
+          <el-card shadow="none" class="kwakcheolyong__canvas-wrapper">
             <canvas id="canvas" ref="canvas" :width="1000" :height="427">
               이 브라우저는 HTML5의 canvas 요소를 지원하지 않습니다
             </canvas>
           </el-card>
           <el-form-item label="원본 대사">
-            <blockquote v-html="getImages[imageIndex].original"></blockquote>
+            <blockquote v-html="images[imageIndex].original"></blockquote>
           </el-form-item>
           <el-form-item label="텍스트">
             <el-input
               type="textarea"
+              class="kwakcheolyong--full-width"
               :value="option.text"
               @input="onValueChanged('text', $event)"
-              :placeholder="getImages[imageIndex].placeholder"
             />
           </el-form-item>
           <el-row>
             <el-col :xs="24" :sm="12" :md="8">
               <el-form-item label="폰트 종류">
-                <el-select :value="option.fontFamily" @input="onValueChanged('fontFamily', $event)">
+                <el-select
+                  :value="option.fontFamily"
+                  @input="onValueChanged('fontFamily', $event)"
+                  class="kwakcheolyong--full-width"
+                >
                   <el-option value="Nanum Gothic">Nanum Gothic</el-option>
                   <el-option value="Gulim">Gulim</el-option>
                   <el-option value="Arial">Arial</el-option>
@@ -43,7 +47,11 @@
 
             <el-col :xs="24" :sm="12" :md="8">
               <el-form-item label="폰트 사이즈">
-                <el-select :value="option.fontSize" @input="onValueChanged('fontSize', $event)">
+                <el-select
+                  :value="option.fontSize"
+                  @input="onValueChanged('fontSize', $event)"
+                  class="kwakcheolyong--full-width"
+                >
                   <el-option :value="15">15</el-option>
                   <el-option :value="20">20</el-option>
                   <el-option :value="25">25</el-option>
@@ -65,16 +73,24 @@
 
             <el-col :xs="24" :sm="12" :md="8">
               <el-form-item label="폰트 두께">
-                <el-select :value="option.fontWeight" @input="onValueChanged('fontWeight', $event)">
+                <el-select
+                  :value="option.fontWeight"
+                  @input="onValueChanged('fontWeight', $event)"
+                  class="kwakcheolyong--full-width"
+                >
                   <el-option value="lighter" label="얇게"></el-option>
-                  <el-option value="normal" label="보통">보통</el-option>
-                  <el-option value="bolder" label="두껍게">두껍게</el-option>
+                  <el-option value="normal" label="보통"></el-option>
+                  <el-option value="bolder" label="두껍게"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :xs="24" :sm="12" :md="8">
               <el-form-item label="폰트 테두리">
-                <el-select :value="option.textBorder" @input="onValueChanged('textBorder', $event)">
+                <el-select
+                  :value="option.textBorder"
+                  @input="onValueChanged('textBorder', $event)"
+                  class="kwakcheolyong--full-width"
+                >
                   <el-option value="transparent" label="없음"></el-option>
                   <el-option value="black" label="검정색"></el-option>
                   <el-option value="white" label="흰색"></el-option>
@@ -133,6 +149,7 @@ export default {
 
   data() {
     return {
+      windowWidth: 0,
       imageIndex: 0,
       option: {
         fontFamily: 'Nanum Gothic',
@@ -146,8 +163,12 @@ export default {
   },
 
   computed: {
-    getImages() {
+    images() {
       return images;
+    },
+
+    labelPosition() {
+      return this.windowWidth > 768 ? 'right' : 'top';
     },
   },
 
@@ -164,25 +185,14 @@ export default {
 
     updateCanvas() {
       if (!this.$refs.canvas) return;
-
       this.updateCanvasImage();
-    },
-
-    downloadCanvas() {
-      const url = this.$refs.canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `${this.getImages[this.imageIndex].name}.png`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
     },
 
     updateCanvasImage() {
       const { canvas } = this.$refs;
       const ctx = canvas.getContext('2d');
       const img = new Image();
-      img.src = this.getImages[this.imageIndex].src;
+      img.src = this.images[this.imageIndex].src;
       img.onload = () => {
         ctx.drawImage(img, 0, 0);
         this.updateCanvasText();
@@ -221,10 +231,27 @@ export default {
         );
       });
     },
+
+    downloadCanvas() {
+      const url = this.$refs.canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `${this.images[this.imageIndex].name}.png`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
+
+    calculateWindowWidth() {
+      this.windowWidth = window.innerWidth;
+    },
   },
 
   mounted() {
+    this.calculateWindowWidth();
     this.$nextTick(() => {
+      window.addEventListener('resize', this.calculateWindowWidth);
+
       this.updateCanvas();
     });
   },
@@ -249,7 +276,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
 
-  .kwakchelyong {
+  .kwakcheolyong {
     &__title {
       text-align: center;
     }
@@ -264,6 +291,10 @@ body {
       width: 100%;
       max-width: 1040px;
       margin: 20px auto;
+    }
+
+    &--full-width {
+      width: 100%;
     }
   }
 

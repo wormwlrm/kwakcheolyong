@@ -1,19 +1,19 @@
-import 내밑에서일할생각없냐 from '@/assets/background/내밑에서일할생각없냐.png';
-import 늑대새끼가어떻게개밑으로들어갑니까 from '@/assets/background/늑대새끼가어떻게개밑으로들어갑니까.png';
-import 달건이 from '@/assets/background/달건이.png';
-import 담배하나찔러봐라 from '@/assets/background/담배하나찔러봐라.png';
-import 또지면넌변사체가된다 from '@/assets/background/또지면넌변사체가된다.png';
-import 묻고더블로가 from '@/assets/background/묻고더블로가.png';
-import 신사답게행동해 from '@/assets/background/신사답게행동해.png';
-import 마그때는깡패가되는거야 from '@/assets/background/마그때는깡패가되는거야.png';
-import 어이젊은친구 from '@/assets/background/어이젊은친구.png';
-import 마포대교 from '@/assets/background/마포대교.png';
-import 이게내결론이다 from '@/assets/background/이게내결론이다.png';
-import 이안에배신자가있다 from '@/assets/background/이안에배신자가있다.png';
-import 퍽퍽 from '@/assets/background/퍽퍽.png';
-import 한끗 from '@/assets/background/한끗.png';
-import 한끗인데5억을태워 from '@/assets/background/한끗인데5억을태워.png';
-import 화란아나도순정이있다 from '@/assets/background/화란아나도순정이있다.png';
+import 내밑에서일할생각없냐 from '@/assets/내밑에서일할생각없냐.png';
+import 늑대새끼가어떻게개밑으로들어갑니까 from '@/assets/늑대새끼가어떻게개밑으로들어갑니까.png';
+import 달건이 from '@/assets/달건이.png';
+import 담배하나찔러봐라 from '@/assets/담배하나찔러봐라.png';
+import 또지면넌변사체가된다 from '@/assets/또지면넌변사체가된다.png';
+import 묻고더블로가 from '@/assets/묻고더블로가.png';
+import 신사답게행동해 from '@/assets/신사답게행동해.png';
+import 마그때는깡패가되는거야 from '@/assets/마그때는깡패가되는거야.png';
+import 어이젊은친구 from '@/assets/어이젊은친구.png';
+import 마포대교 from '@/assets/마포대교.png';
+import 이게내결론이다 from '@/assets/이게내결론이다.png';
+import 이안에배신자가있다 from '@/assets/이안에배신자가있다.png';
+import 퍽퍽 from '@/assets/퍽퍽.png';
+import 한끗 from '@/assets/한끗.png';
+import 한끗인데5억을태워 from '@/assets/한끗인데5억을태워.png';
+import 화란아나도순정이있다 from '@/assets/화란아나도순정이있다.png';
 
 export default [
   {
@@ -111,7 +111,6 @@ export default [
     id: 15,
     src: 마포대교,
     name: '마포대교는 무너졌냐, 이 새끼야?',
-    original: `회장님, 올림픽대로가 막힐 것 같습니다.<br>
-  마포대교는 무너졌냐, 이 새끼야?`,
+    original: `회장님, 올림픽대로가 막힐 것 같습니다.<br>마포대교는 무너졌냐, 이 새끼야?`,
   },
 ];
