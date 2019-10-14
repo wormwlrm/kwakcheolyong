@@ -123,10 +123,29 @@
             type="primary"
             :underline="false"
             target="_blank"
-            href="https://wormwlrm.github.io"
+            href="https://github.com/wormwlrm"
           >
-            재그지그 </el-link
-          >,
+            재그지그
+          </el-link>
+          |
+          <el-link
+            type="primary"
+            :underline="false"
+            target="_blank"
+            href="https://github.com/wormwlrm/kwakcheolyong"
+          >
+            Github
+          </el-link>
+          |
+          <el-link
+            type="primary"
+            :underline="false"
+            target="_blank"
+            href="https://wormwlrm.github.io/2019/10/13/Kwakcheolyong-Image-Creator-Development-Story.html"
+          >
+            제작 과정 보러가기
+          </el-link>
+          |
           <el-link
             type="primary"
             :underline="false"
