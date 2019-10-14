@@ -1,6 +1,10 @@
 # 🎴 곽철용 짤 생성기
 
+<p style="text-align: center;">
+
 ![preview](/preview.gif)
+
+</p>
 
 *편리하게 과철용 짤을 편집하고 다운로드할 수 있습니다.*
 
@@ -24,6 +28,11 @@ npm run serve
 ## 고니야, PR 한 번 찔러봐라
 
 어떤 양식의 풀 리퀘스트도 환영합니다.
+
+## 이 안에 도움을 받은 소스가 있다, 이게 내 결론이다
+
+- [개비스콘 짤 생성기](https://github.com/rajephon/gvsc)
+- [Velog 짤 생성기](https://velog.io/@godori/banner-maker)
 
 ## 묻고 MIT 라이센스로 가
 
