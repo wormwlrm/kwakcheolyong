@@ -1,10 +1,6 @@
 # 🎴 곽철용 짤 생성기
 
-<p style="text-align: center;">
-
 ![preview](/preview.gif)
-
-</p>
 
 *편리하게 과철용 짤을 편집하고 다운로드할 수 있습니다.*
 
